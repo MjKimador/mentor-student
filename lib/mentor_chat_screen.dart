@@ -4,10 +4,38 @@ import 'package:student_mentor_chat/message.dart';
 import 'package:student_mentor_chat/message_handler.dart';
 
 class MentorChatScreen extends StatefulWidget {
+  
   @override
   _MentorChatScreenState createState() => _MentorChatScreenState();
 }
-
+void _showExportDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Export Message"),
+          content: TextField(
+            decoration: InputDecoration(labelText: "Enter topic/question"),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Cancel"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Handle submission here
+                Navigator.of(context).pop();
+              },
+              child: Text("Submit"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 class _MentorChatScreenState extends State<MentorChatScreen> {
   TextEditingController _messageController = TextEditingController();
 
@@ -29,6 +57,12 @@ class _MentorChatScreenState extends State<MentorChatScreen> {
             icon: Icon(Icons.person),
             onPressed: () {
               Navigator.pushNamed(context, '/');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.explore),
+            onPressed: () {
+               _showExportDialog(context);
             },
           ),
         ],
