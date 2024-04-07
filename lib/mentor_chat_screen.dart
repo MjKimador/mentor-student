@@ -16,7 +16,23 @@ class _MentorChatScreenState extends State<MentorChatScreen> {
     var messageHandler = Provider.of<MessageHandler>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Mentor Chat')),
+      appBar: AppBar(
+        title: Text('Mentor Chat'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.chat),
+            onPressed: () {
+              Navigator.pushNamed(context, '/general');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(
