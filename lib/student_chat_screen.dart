@@ -26,6 +26,12 @@ class _StudentChatScreenState extends State<StudentChatScreen> {
               Navigator.pushNamed(context, '/mentor');
             },
           ),
+          IconButton(
+            icon: Icon(Icons.chat),
+            onPressed: () {
+              Navigator.pushNamed(context, '/general');
+            },
+          ),
         ],
       ),
       body: Column(
@@ -69,6 +75,7 @@ class _StudentChatScreenState extends State<StudentChatScreen> {
               },
             ),
           ),
+
 
 
 
