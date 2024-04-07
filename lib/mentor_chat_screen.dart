@@ -9,6 +9,8 @@ class MentorChatScreen extends StatefulWidget {
   _MentorChatScreenState createState() => _MentorChatScreenState();
 }
 void _showExportDialog(BuildContext context) {
+    final messageHandler = Provider.of<MessageHandler>(context, listen: false);
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -16,6 +18,9 @@ void _showExportDialog(BuildContext context) {
           title: Text("Export Message"),
           content: TextField(
             decoration: InputDecoration(labelText: "Enter topic/question"),
+            onChanged: (value) {
+              messageHandler.exportTopic = value;
+            },
           ),
           actions: [
             TextButton(
@@ -26,7 +31,8 @@ void _showExportDialog(BuildContext context) {
             ),
             ElevatedButton(
               onPressed: () {
-                // Handle submission here
+                // Handle exporting the chat to the general chat space
+                messageHandler.exportChatToGeneral();
                 Navigator.of(context).pop();
               },
               child: Text("Submit"),
